@@ -1,5 +1,5 @@
 const express = require('express')
-const mysql = require('mysql')
+const insert = require('./server')
 const app = express()
 
 app.set('view engine', 'ejs')
@@ -10,17 +10,11 @@ app.use(express.urlencoded({
 
 app.listen(10)
 
-let info = { title: '' }
+let info = {}
 
 app.get('/', (req, res) => {
-
     info.title = 'Home'
     res.render('home', info)
-})
-
-app.get('/signup', (req, res) => {
-    info.title = 'signup'
-    res.render('signup', info)
 })
 
 app.get('/about', (req, res) => {
@@ -28,29 +22,10 @@ app.get('/about', (req, res) => {
     res.render('about', info)
 })
 
-const con = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'alexunder'
+app.get('/signup', (req, res) => {
+    info.title = 'signup'
+    res.render('signup', info)
 })
-
-con.connect(function (err) {
-    if (err) throw err
-    console.log('connect successfully');
-});
-
-
-function insertData(firstname, lastname, email, password) {
-
-    let sql = 'INSERT INTO alexuser(firstname, lastname, email, password) VALUES ?'
-    con.query(sql, [[[firstname, lastname, email, password]]], (err, result) => {
-        if (err) throw err
-        console.log('successfully inserted');
-    });
-
-}
-
 
 app.post('/user/signup', (req, res) => {
     info.firstname = req.body.firstname
@@ -58,7 +33,7 @@ app.post('/user/signup', (req, res) => {
     info.email = req.body.email
     info.password = req.body.password
 
-    insertData(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
+    insert(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
 
     return res.redirect('/signup')
 
