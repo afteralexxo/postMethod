@@ -1,0 +1,20 @@
+<%- include('./partials/head') %>
+
+    <body>
+        <div class="div-container">
+            <%- include('./partials/nav') %>
+                <div class="signup-container">
+                    <form action="/user/signup" method="post">
+                        <input type="text" name="firstname" placeholder="Firstname"><br>
+                        <input type="text" name="lastname" placeholder="Lastname"><br>
+                        <input type="text" name="email" placeholder="Email"><br>
+                        <input type="password" name="password" placeholder="password"><br>
+                        <button>signup</button>
+
+                    </form>
+                </div>
+                <%- include('./partials/footer') %>
+        </div>
+    </body>
+
+    </html>

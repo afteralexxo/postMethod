@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexunder | <%= title %>
+    </title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            height: 100vh;
+        }
+
+        .div-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-family: arial, sans-serif;
+        }
+
+        nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            text-align: center;
+            width: 65%;
+            margin-right: 15ch;
+            font-family: arial black, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            font-family: arial black, sans-serif;
+        }
+
+        nav h1>a,
+        li a {
+            color: black;
+            position: relative;
+        }
+
+        li a {
+            text-decoration: line-through;
+        }
+
+        li a:hover {
+            color: rgba(202, 48, 48, 0.856);
+            bottom: .5em;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            padding: .5em;
+        }
+
+        nav ul li {
+            gap: 1em;
+        }
+
+        footer {
+            color: green;
+            font-family: arial black, sans-serif;
+            display: flex;
+            justify-content: center;
+            margin: 1em;
+        }
+
+        input {
+            height: 2em;
+            margin: .5em;
+            border: none;
+        }
+
+        input:focus {
+            color: white;
+            background: rgba(0, 0, 0, 0.801); 
+        }
+
+        button {
+            height: 2em; width: 5em;
+            border-radius: 1em;
+            text-align: center;
+            margin: 1em;
+        }
+
+        button:hover {
+            color: grey;
+            background-color: rgba(41, 212, 41, 0.404);
+        }
+    </style>
+</head>
