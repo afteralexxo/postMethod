@@ -1,17 +1,18 @@
 const mysql = require('mysql')
 
-const con = mysql.createConnection({
+const xamppConnection = {
     host: 'localhost',
     user: 'root',
     password: '',
     database: 'alexunder'
-})
+}
+
+const con = mysql.createConnection(xamppConnection)
 
 con.connect(function (err) {
     if (err) throw err
     console.log('connect successfully');
 });
-
 
 module.exports = (firstname, lastname, email, password) => {
 
