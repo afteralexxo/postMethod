@@ -14,13 +14,23 @@ con.connect(function (err) {
     console.log('connect successfully');
 });
 
+let arr = []
+
 module.exports = (firstname, lastname, email, password) => {
-
-    let sql = 'INSERT INTO alexuser(firstname, lastname, email, password) VALUES ?'
-    con.query(sql, [[[firstname, lastname, email, password]]], (err, result) => {
+    con.query('SELECT * FROM alexuser', (err, result) => {
         if (err) throw err
-        console.log('successfully inserted');
+        result.forEach(coll => {
+            arr.push(coll.firstname)
+        })
+        if (arr.includes(firstname)) {
+            console.log('user existed');
+        }
+        else {
+            let sql = 'INSERT INTO alexuser(firstname, lastname, email, password) VALUES ?'
+            con.query(sql, [[[firstname, lastname, email, password]]], (err, result) => {
+                if (err) throw err
+                console.log('inserted');
+            })
+        }
     });
-
 }
-
