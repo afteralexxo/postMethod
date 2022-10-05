@@ -1,8 +1,8 @@
-<%- include('./partials/head') %>
+<%- include('../public/head') %>
 
     <body>
         <div class="div-container">
-            <%- include('./partials/nav') %>
+            <%- include('../public/nav') %>
                 <div class="signup-container">
                     <form action="/user/signup" method="post">
                         <input type="text" name="firstname" placeholder="Firstname"><br>
@@ -13,7 +13,7 @@
 
                     </form>
                 </div>
-                <%- include('./partials/footer') %>
+                <%- include('../public/footer') %>
         </div>
     </body>
 

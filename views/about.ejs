@@ -1,17 +1,12 @@
-<%- include('./partials/head') %>
+<%- include('../public/head') %>
 
     <body>
         <div class="div-container">
-            <%- include('./partials/nav') %>
-                <div class="">
-                    <% if(firstname == ''){%>
-                        <h1>Please login to Alexunder acc</h1>
-
-                    <%}else {%>
-                        <h1><b><%= firstname%></b> this is your Alexunder acc </h1>
-                        <%}%>
+            <%- include('../public/nav') %>
+                <div class="about-container">
+                    <h1>About</h1>
                 </div>
-                <%- include('./partials/footer') %>
+                <%- include('../public/footer') %>
         </div>
     </body>
 

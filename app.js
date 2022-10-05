@@ -8,6 +8,8 @@ app.use(express.urlencoded({
     extended: false
 }))
 
+app.use(express.static('public'))
+
 app.listen(10)
 
 let info = {}
