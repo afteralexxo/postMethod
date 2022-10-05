@@ -30,6 +30,10 @@
             font-family: arial black, sans-serif;
         }
 
+        h1  span {
+            color: red;
+        }
+
         nav h1>a,
         li a {
             color: black;

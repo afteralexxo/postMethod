@@ -1,5 +1,6 @@
 const express = require('express')
 const insert = require('./server')
+const path = require('path')
 const app = express()
 
 app.set('view engine', 'ejs')
@@ -8,7 +9,8 @@ app.use(express.urlencoded({
     extended: false
 }))
 
-app.use(express.static('public'))
+const static = path.join(__dirname, 'public')
+app.use(express.static(static))
 
 app.listen(10)
 
@@ -36,7 +38,9 @@ app.post('/user/signup', (req, res) => {
     info.password = req.body.password
 
     insert(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
-
     return res.redirect('/signup')
+})
 
+app.use((req, res) => {
+    res.status(404).render('404', { title: 'Not-Found' })
 })
