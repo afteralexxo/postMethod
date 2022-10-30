@@ -1,6 +1,7 @@
 const express = require('express')
-const insert = require('./server')
+const User = require('./server')
 const path = require('path')
+const mongoose = require('mongoose')
 const app = express()
 
 app.set('view engine', 'ejs')
@@ -12,9 +13,11 @@ app.use(express.urlencoded({
 const static = path.join(__dirname, 'public')
 app.use(express.static(static))
 
-app.listen(10)
+const PORT = process.env.PORT || 3000
 
-let info = {}
+app.listen(PORT, () => console.log(`Server run on port ${PORT}`))
+
+const info = {}
 
 app.get('/', (req, res) => {
     info.title = 'Home'
@@ -32,12 +35,18 @@ app.get('/signup', (req, res) => {
 })
 
 app.post('/user/signup', (req, res) => {
-    info.firstname = req.body.firstname
-    info.lastname = req.body.lastname
-    info.email = req.body.email
-    info.password = req.body.password
+    client = req.body
 
-    insert(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
+    try{
+        mongoose.connect('mongodb://127.0.0.1:27017/File')
+        User.create({ firstname: client.firstname, lastname: client.lastname, email: client.email, password: client.password })
+        .then(() => {
+            console.log('successfuly inserted ', client.firstname);
+        })
+        // insert(req.body.firstname, req.body.lastname, req.body.email, req.body.password)
+    }catch(e){
+        console.log(e.message);
+    }
     return res.redirect('/signup')
 })
 
